@@ -6,24 +6,25 @@ import  Form  from './Form.js';
 
 class App extends Component {
   state = {
-    characters: [
-      {
-        'name': 'Charlie',
-        'job': 'Janitor'
-      },
-      {
-        'name': 'Mac',
-        'job': 'Bouncer'
-      },
-      {
-        'name': 'Dee',
-        'job': 'Aspring actress'
-      },
-      {
-        'name': 'Dennis',
-        'job': 'Bartender'
-      }
-    ]
+    characters: []
+    // characters: [
+    //   {
+    //     'name': 'Charlie',
+    //     'job': 'Janitor'
+    //   },
+    //   {
+    //     'name': 'Mac',
+    //     'job': 'Bouncer'
+    //   },
+    //   {
+    //     'name': 'Dee',
+    //     'job': 'Aspring actress'
+    //   },
+    //   {
+    //     'name': 'Dennis',
+    //     'job': 'Bartender'
+    //   }
+    // ]
   }
   removeCharacter = index => {
     const {characters} = this.state;
@@ -34,11 +35,16 @@ class App extends Component {
     })
   }
 
+  handleSubmit = character => {
+    console.log(character)
+    this.setState({ characters: [...this.state.characters, character] });
+  }
+
   render() {
       return ( 
         <div>
           < Table characterData={this.state.characters} removeCharacter={this.removeCharacter} />
-          <Form />
+          <Form handleSubmit={this.handleSubmit} />
         </div>
           // <div className="App">
           //   <header className="App-header">

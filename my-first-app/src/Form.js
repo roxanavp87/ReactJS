@@ -19,8 +19,10 @@ class Form extends Component {
     }
 
     submit = e => {
-        console.log(`On submit ${this.state.name}`);
+        console.log(`Form has been submitted`);
         e.preventDefault();
+        this.props.handleSubmit(this.state);
+        this.setState(this.initialState);
     }
 
     render() {
@@ -30,11 +32,13 @@ class Form extends Component {
                 <input
                     type="text"
                     name="name"
+                    value= {this.state.name}
                     onChange={this.handleChange} />
                 <label>Job</label>
                 <input
                     type="text"
                     name="job"
+                    value={this.state.job}
                     onChange={this.handleChange} />
                     <button>Submit</button>
             </form>
