@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Table from './Table.js';
+import  Form  from './Form.js';
 
 class App extends Component {
   state = {
@@ -34,7 +35,11 @@ class App extends Component {
   }
 
   render() {
-      return ( < Table characterData = {this.state.characters} removeCharacter={this.removeCharacter} />
+      return ( 
+        <div>
+          < Table characterData={this.state.characters} removeCharacter={this.removeCharacter} />
+          <Form />
+        </div>
           // <div className="App">
           //   <header className="App-header">
           //     <img src={logo} className="App-logo" alt="logo" />

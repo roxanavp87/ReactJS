@@ -16,6 +16,7 @@ const Table = ({ characterData, removeCharacter}) => {
                 <tr>
                     <th>Name</th>
                     <th>Job</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
