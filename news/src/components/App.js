@@ -9,9 +9,9 @@ class App extends Component {
       <div className="App">
         <SearchAppBar />
         <header className="App-header">
-          <p>
-            My feed.
-          </p>
+          <h1>
+            TOP STORIES
+          </h1>
           <News />
         </header>
       </div>
