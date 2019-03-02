@@ -19,7 +19,7 @@ class News extends Component {
              return response.json();
          })
          .then(data => {
-             console.log(data);
+            //  console.log(data);
              this.setState({news: data.articles});
          })
          .catch( error => console.log(error));

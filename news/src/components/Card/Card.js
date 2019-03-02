@@ -7,16 +7,16 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import MoreIcon from '@material-ui/icons/More';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import ShareIcon from '@material-ui/icons/Share';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+// import Collapse from '@material-ui/core/Collapse';
+// import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
     card: {
@@ -29,6 +29,7 @@ const styles = theme => ({
     },
     actions: {
         display: 'flex',
+        justifyContent: 'space-between'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -50,7 +51,7 @@ class CustomCard extends Component {
     constructor(props) {
         super(props);
         this.state = { expanded: false };
-        console.log(props)
+        // console.log(props)
     }
 
     handleExpandClick = () => {
@@ -61,7 +62,7 @@ class CustomCard extends Component {
     
 
     render() {
-        const { classes } = this.props;
+        const { classes, title, urlToImage, publishedAt, content, url } = this.props;
 
         return (
             <Card className={classes.card}>
@@ -71,29 +72,33 @@ class CustomCard extends Component {
                     //         R
                     //     </Avatar>
                     // }
-                    action={
-                        <IconButton aria-label="More">
-                            <MoreIcon />
-                        </IconButton>
-                    }
-                    title={this.props.title}
-                    subheader={this.props.publishedAt}
+                    // action={
+                        // <IconButton aria-label="More">
+                        //     <MoreIcon />
+                        // </IconButton>
+                    // }
+                    title={title}
+                    subheader={publishedAt}
                 />
                 <CardMedia
                     className={classes.media}
-                    image={this.props.urlToImage}
-                    title={this.props.title}
+                    image={urlToImage}
+                    title={title}
                 />
                 <CardContent>
                     <Typography component="p">
-                        {this.props.content}
+                        {content}
                     </Typography>
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
-                    
                     <IconButton aria-label="Add to favorites">
                         <FavoriteIcon />
                     </IconButton>
+                    <a href={url} target='_blank'>
+                        <IconButton aria-label="More">
+                            <MoreHorizIcon />
+                        </IconButton>
+                    </a>
                 </CardActions>
             </Card>
         );
