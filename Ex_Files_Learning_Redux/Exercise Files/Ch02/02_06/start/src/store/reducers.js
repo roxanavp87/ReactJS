@@ -1,4 +1,5 @@
 import C from '../constants'
+import {combineReducers} from 'redux';
 
 export const goal = (state=10, action) => 
 	(action.type === C.SET_GOAL) ? 
@@ -80,3 +81,13 @@ export const suggestions = (state=[], action) => {
         return state;
     }
 }
+
+export default combineReducers({
+  allSkiDays,
+  goal,
+  errors,
+  resortNames: combineReducers({
+    fetching,
+    suggestions
+  })
+})
