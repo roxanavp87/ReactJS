@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import logo from './logo.png';
 import './App.css';
+import data from './data/data.json';
 import Home from './components/Home';
 import Vitamin from "./components/Vitamin";
 import Navigation from './components/Navigation';
@@ -11,10 +12,17 @@ class App extends Component {
     super(props);
     this.state = {
       toggleLogo: true,
+      cards: []
     }
     this.toggleLogo = this.toggleLogo.bind(this);
     this.openNav = this.openNav.bind(this);
     this.closeNav = this.closeNav.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      cards: data,
+    });
   }
 
   toggleLogo(event) {
@@ -51,7 +59,9 @@ class App extends Component {
             <Navigation closeNav={this.closeNav} />
           </header>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={ props => (
+                <Home cards={this.state.cards} />
+            )} />
             <Route exact path="/vitamin" component={Vitamin} />
 
           </Switch>
