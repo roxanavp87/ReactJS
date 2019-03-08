@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import logo from './logo.png';
 import './App.css';
 import Home from './components/Home';
+import Vitamin from "./components/Vitamin";
 import Navigation from './components/Navigation';
 
 class App extends Component {
@@ -31,23 +33,30 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} 
-            className={this.state.toggleLogo ? 'static-logo' : 'static-logo animated jello'} 
-            alt="logo"
-            onMouseEnter={this.toggleLogo}
-            onMouseLeave={this.toggleLogo}
-            onClick={this.openNav}
-          />
-          <h1
-            className={this.state.toggleLogo ? 'menu-hidden' : 'menu animated bounceInDown'}
-            onClick={this.openNav}
-          >Menu</h1>
-          <Navigation closeNav={this.closeNav} />
-        </header>
-        <Home />
-      </div>
+
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} 
+              className={this.state.toggleLogo ? 'static-logo' : 'static-logo animated jello'} 
+              alt="logo"
+              onMouseEnter={this.toggleLogo}
+              onMouseLeave={this.toggleLogo}
+              onClick={this.openNav}
+            />
+            <h1
+              className={this.state.toggleLogo ? 'menu-hidden' : 'menu animated bounceInDown'}
+              onClick={this.openNav}
+            >Menu</h1>
+            <Navigation closeNav={this.closeNav} />
+          </header>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/vitamin" component={Vitamin} />
+
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
