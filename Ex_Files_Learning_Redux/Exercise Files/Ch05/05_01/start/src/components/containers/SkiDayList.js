@@ -17,7 +17,3 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkiDayList);
 
-// export default (props) =>
-//     <SkiDayList days={sample}
-//                 filter={props.params.filter}
-//                 onRemoveDay={date => console.log('remove day on', date)} />
